@@ -3,33 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="12dp"
-    android:layout_marginBottom="15dp"
-    >
+    android:orientation="vertical"
+    android:layout_marginBottom="20dp">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A"
-        android:textSize="45sp"
-        android:layout_marginLeft="30dp"
-        android:id="@+id/prefix"
-        />
+        android:text="Temp"
+        android:id="@+id/tempFor"
+        android:textSize="30sp"
+        android:layout_marginLeft="30dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Date"
+        android:id="@+id/dateFor"
+        android:textSize="30sp"
         android:layout_marginLeft="30dp"
-        android:text="Dhaka"
-        android:textSize="40sp"
-        android:id="@+id/cityName"/>
-
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="70dp"
-        android:text="Click"
-        android:id="@+id/click"/>
-
+        android:layout_marginBottom="30dp"/>
 
 
 </LinearLayout>
