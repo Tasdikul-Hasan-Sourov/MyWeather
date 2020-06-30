@@ -10,14 +10,60 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="City"
+        android:text="Add City"
         android:id="@+id/topText"
+        android:textColor="#fff"
         android:textSize="30sp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:background="#712BB6"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="5 Days Forcast"
+            android:textAlignment="center"
+            android:textColor="#000209"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:paddingLeft="29dp">
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sun"
+                android:paddingLeft="15dp"/>
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/beach"
+                android:paddingLeft="15dp"/>
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rain"
+                android:paddingLeft="15dp"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recView"/>
+
+    </LinearLayout>
 
 
 
