@@ -14,9 +14,9 @@ import java.util.List;
 
 public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
     private Context context;
-    private List<Example> items;
+    private List<MyList> items;
 
-    public RecAdapter(Context context, List<Example> items) {
+    public RecAdapter(Context context, List<MyList> items) {
         this.context = context;
         this.items = items;
     }
@@ -31,7 +31,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ApiViewHolder holder, int position) {
-            Example item=items.get(position);
+            MyList item=items.get(position);
             holder.date.setText(item.getMain().getTemp());
             holder.temp.setText(item.getMain().getHumidity());
     }
