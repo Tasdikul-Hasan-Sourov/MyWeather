@@ -5,11 +5,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
@@ -32,8 +37,19 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ApiViewHolder holder, int position) {
             MyList item=items.get(position);
-            holder.date.setText(item.getMain().getTemp());
-            holder.temp.setText(item.getMain().getHumidity());
+            holder.temp.setText(item.getMain().getTemp()+"°C");
+            holder.feels.setText(item.getMain().getFeelsLike()+"°C");
+            holder.humidity.setText(item.getMain().getHumidity());
+            holder.pressure.setText(item.getMain().getPressure());
+            holder.state.setText(item.getList().get(0).getMainLine());
+            holder.description.setText(item.getList().get(0).getDescription());
+            holder.date.setText(item.getDate());
+            Picasso.with(context)
+                    .load(item.getList().get(0).getIcon())
+                    .into(holder.img);
+
+
+
     }
 
     @Override
@@ -42,12 +58,21 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
     }
 
     public class ApiViewHolder extends RecyclerView.ViewHolder {
-        TextView date,temp;
+        TextView temp,feels,humidity,pressure,state,description,date;
+        ImageView img;
 
         public ApiViewHolder(@NonNull View itemView) {
             super(itemView);
-            date=(TextView) itemView.findViewById(R.id.dateFor);
             temp=(TextView) itemView.findViewById(R.id.tempFor);
+            feels=(TextView) itemView.findViewById(R.id.feelsFor);
+            humidity=(TextView) itemView.findViewById(R.id.humidityFor);
+            pressure=(TextView) itemView.findViewById(R.id.pressureFor);
+            state=(TextView) itemView.findViewById(R.id.stateFor);
+            description=(TextView) itemView.findViewById(R.id.desFor);
+            date=(TextView) itemView.findViewById(R.id.dateFor);
+            img=(ImageView) itemView.findViewById(R.id.img);
+
+
         }
     }
 }

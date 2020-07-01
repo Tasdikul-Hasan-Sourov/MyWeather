@@ -6,13 +6,17 @@
     android:orientation="vertical"
     android:layout_marginBottom="8dp"
     android:layout_marginTop="5dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
     android:background="@drawable/itembg">
 
+
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="60dp">
+        android:paddingLeft="40dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,15 +135,19 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="Light rain drizzles"
                 android:textSize="18sp"
                 android:textAlignment="center"
                 android:id="@+id/desFor"/>
+            <ImageView
+                android:layout_marginLeft="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/img"/>
 
 
         </LinearLayout>
 
 </LinearLayout>
-
-
 </LinearLayout>

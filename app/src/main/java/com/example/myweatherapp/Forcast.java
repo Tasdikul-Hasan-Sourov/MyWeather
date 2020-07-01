@@ -37,6 +37,7 @@ public class Forcast extends AppCompatActivity {
         call.enqueue(new Callback<Example2>() {
             @Override
             public void onResponse(Call<Example2> call, Response<Example2> response) {
+
                 Example2 list=response.body();
                 recView.setAdapter(new RecAdapter(Forcast.this,list.getList()));
 
