@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 temp.setText(response.body().getMain().getTemp()+"°C");
-               pressure.setText(response.body().getMain().getPressure()+"hp");
+               pressure.setText(response.body().getMain().getPressure()+"hpa");
                 hum.setText(response.body().getMain().getHumidity()+"%");
                 maxt.setText(response.body().getMain().getTemp_max()+"°C");
                 mint.setText(response.body().getMain().getTemp_min()+"°C");

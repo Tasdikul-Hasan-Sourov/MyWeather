@@ -113,7 +113,7 @@ public class Search extends AppCompatActivity {
         SharedPreferences.Editor editor=sp.edit();
         editor.putString("city",bar.getText().toString());
         editor.apply();
-        Toast.makeText(this,"done",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Added",Toast.LENGTH_SHORT).show();
 
     }
 
