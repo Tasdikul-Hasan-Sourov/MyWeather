@@ -54,6 +54,7 @@ public class Search extends AppCompatActivity {
         bearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CheckValidity();
                 getCity(bar.getText().toString().trim());
             }
         });
@@ -73,12 +74,27 @@ public class Search extends AppCompatActivity {
 
     }
 
+    private void CheckValidity() {
+        String search=bar.getText().toString().trim();
+        if(search.isEmpty())
+        {
+            bar.setError("Enter a city");
+            bar.requestFocus();
+            return;
+        }
+
+
+    }
+
     private void  getCity(String name){
         CityApi apiInterface= ApiClient.getClient().create(CityApi.class);
         Call<Example> call=  apiInterface.getCity(name);
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
+                if(!response.isSuccessful()){
+                    return;
+                }
                 temp.setText(response.body().getMain().getTemp()+"°C");
                 weather.setText(response.body().getList().get(0).getMainLine());
                 min.setText(response.body().getMain().getTemp_min()+"°C");

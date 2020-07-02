@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:orientation="horizontal"
-            android:paddingLeft="29dp">
+            android:paddingLeft="15dp">
             <ImageView
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
