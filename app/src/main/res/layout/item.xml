@@ -23,7 +23,7 @@
             android:text="Date:"
             android:textSize="25sp"
             android:layout_marginLeft="30dp"
-            android:textColor="#F13E7B"/>
+            android:textColor="#fff"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Temperature:"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:layout_marginLeft="30dp"/>
          <TextView
@@ -73,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Feels Like:"
+            android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginLeft="30dp"/>
         <TextView
@@ -91,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Humidity:"
+            android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginLeft="30dp"/>
         <TextView
@@ -110,6 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pressure:"
+            android:textColor="#fff"
             android:textSize="20sp"
             android:layout_marginLeft="30dp"/>
         <TextView
@@ -130,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="Light Rain"
                 android:textSize="20sp"
+                android:textColor="#fff"
                 android:textAlignment="center"
                 android:id="@+id/stateFor"/>
             <TextView

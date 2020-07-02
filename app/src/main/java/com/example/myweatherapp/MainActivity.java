@@ -7,10 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button addButton,forcast;
     TextView temp,pressure,hum,topText,maxt,mint,mainl,descripmain;
     ImageView imgmain;
+    int backbuttoncount;
 
 
     @Override
@@ -40,23 +45,49 @@ public class MainActivity extends AppCompatActivity {
         descripmain=(TextView) findViewById(R.id.descripMain);
         topText=(TextView) findViewById(R.id.topText);
         forcast=(Button) findViewById(R.id.foreCast);
-        displayData();
-        getCity(topText.getText().toString().trim());
-        addButton.setOnClickListener(new View.OnClickListener() {
+
+        topText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Search.class);
-                startActivity(intent);
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().trim().length()==0){
+                    forcast.setEnabled(false);
+                } else {
+                    forcast.setEnabled(true);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        forcast.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Forcast.class);
-                startActivity(intent);
-            }
-        });
+            displayData();
+            getCity(topText.getText().toString().trim());
+
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), Search.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            forcast.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), Forcast.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
         }
 
     private void getCity(String name) {
@@ -65,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
+                if(!response.isSuccessful()){
+                    return;
+                }
                 temp.setText(response.body().getMain().getTemp()+"°C");
                pressure.setText(response.body().getMain().getPressure()+"hp");
                 hum.setText(response.body().getMain().getHumidity()+"%");
@@ -72,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
                 mint.setText(response.body().getMain().getTemp_min()+"°C");
                 mainl.setText(response.body().getList().get(0).getMainLine());
                 descripmain.setText(response.body().getList().get(0).getDescription());
-
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
+                temp.setText(t.getMessage());
 
             }
         });
@@ -86,5 +120,18 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp= getSharedPreferences("city", Context.MODE_PRIVATE);
         String city=sp.getString("city","").toUpperCase();
         topText.setText(city);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(backbuttoncount >= 1){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);}
+        else{
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+            backbuttoncount++;
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.myweatherapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,17 +34,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Search extends AppCompatActivity {
 
     Button bearch,add;
-    TextView temp, desc,humidity;
+    TextView temp,weather,min,max;
     EditText bar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.hide();
         bearch=(Button) findViewById(R.id.button);
         temp=(TextView) findViewById(R.id.temp);
-        desc =(TextView) findViewById(R.id.desc);
-        humidity =(TextView) findViewById(R.id.humidity);
+        weather =(TextView) findViewById(R.id.weather);
+        min =(TextView) findViewById(R.id.searchMin);
+        max=(TextView) findViewById(R.id.searchMax);
         bar=(EditText) findViewById(R.id.search);
         add=(Button) findViewById(R.id.addMain);
 
@@ -55,9 +61,13 @@ public class Search extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent m=new Intent(getApplicationContext(),MainActivity.class);
-                 saveInfo();
-                startActivity(m);
+                    Intent m = new Intent(getApplicationContext(), MainActivity.class);
+                    saveInfo();
+                    startActivity(m);
+                    finish();
+
+
+
             }
         });
 
@@ -69,9 +79,10 @@ public class Search extends AppCompatActivity {
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                temp.setText("টেম্পারেচার" +" "+response.body().getMain().getTemp());
-                desc.setText("Pressure :"+" "+response.body().getMain().getPressure());
-                humidity.setText("Humidity :"+" "+response.body().getMain().getHumidity());
+                temp.setText(response.body().getMain().getTemp()+"°C");
+                weather.setText(response.body().getList().get(0).getMainLine());
+                min.setText(response.body().getMain().getTemp_min()+"°C");
+                max.setText(response.body().getMain().getTemp_max()+"°C");
             }
 
             @Override
@@ -88,5 +99,11 @@ public class Search extends AppCompatActivity {
         editor.apply();
         Toast.makeText(this,"done",Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
     }
 }

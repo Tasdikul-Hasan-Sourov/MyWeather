@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Forcast"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/weatherbg">
 
     <TextView
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
             android:layout_height="40dp"
             android:text="5 Days Forcast"
             android:textAlignment="center"
-            android:textColor="#000209"
+            android:textColor="#fff"
             android:textSize="25sp"/>
     </LinearLayout>
 

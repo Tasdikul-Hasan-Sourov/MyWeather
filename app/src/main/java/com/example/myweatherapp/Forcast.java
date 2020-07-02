@@ -1,10 +1,12 @@
 package com.example.myweatherapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -23,6 +25,8 @@ public class Forcast extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forcast);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.hide();
         temp=(TextView) findViewById(R.id.tempFor);
         topText=(TextView) findViewById(R.id.topText);
         recView=(RecyclerView) findViewById(R.id.recView);
@@ -57,5 +61,11 @@ public class Forcast extends AppCompatActivity {
         SharedPreferences sp= getSharedPreferences("city", Context.MODE_PRIVATE);
         String city=sp.getString("city","").toUpperCase();
         topText.setText(city);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
     }
 }
