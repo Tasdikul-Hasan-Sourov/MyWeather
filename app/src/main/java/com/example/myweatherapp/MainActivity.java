@@ -16,6 +16,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         descripmain=(TextView) findViewById(R.id.descripMain);
         topText=(TextView) findViewById(R.id.topText);
         forcast=(Button) findViewById(R.id.foreCast);
+        imgmain=(ImageView) findViewById(R.id.img);
+
 
         topText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -66,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
 
             displayData();
             getCity(topText.getText().toString().trim());
@@ -106,6 +112,23 @@ public class MainActivity extends AppCompatActivity {
                 mint.setText(response.body().getMain().getTemp_min()+"°C");
                 mainl.setText(response.body().getList().get(0).getMainLine());
                 descripmain.setText(response.body().getList().get(0).getDescription());
+                String img= mainl.getText().toString().trim();
+                String im2="Clouds";
+                if(im2.equals(img)){
+
+                    imgmain.setImageResource(R.drawable.cloud);
+                }
+                else if(img.equals("Rain")){
+                    imgmain.setImageResource(R.drawable.rain);
+                }
+
+                else if(img.equals("Haze")){
+                    imgmain.setImageResource(R.drawable.haze);
+                }
+                else if(img.equals("Clear")){
+                    imgmain.setImageResource(R.drawable.beach);
+                }
+
             }
 
             @Override

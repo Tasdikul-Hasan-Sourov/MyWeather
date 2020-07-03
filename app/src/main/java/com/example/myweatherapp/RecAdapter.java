@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -44,10 +45,23 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
             holder.state.setText(item.getList().get(0).getMainLine());
             holder.description.setText(item.getList().get(0).getDescription());
             holder.date.setText(item.getDate());
-            Picasso.with(context)
-                    .load(item.getList().get(0).getIcon())
-                    .into(holder.img);
 
+            String img= holder.state.getText().toString();
+            String im2="Clouds";
+            if(im2.equals(img)){
+
+            holder.imgr.setImageResource(R.drawable.cloudd);
+           }
+           else if(img.equals("Rain")){
+            holder.imgr.setImageResource(R.drawable.rainn);
+           }
+
+           else if(img.equals("Haze")){
+            holder.imgr.setImageResource(R.drawable.fog);
+          }
+           else if(img.equals("Clear")){
+            holder.imgr.setImageResource(R.drawable.summer);
+        }
 
 
     }
@@ -59,7 +73,7 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
 
     public class ApiViewHolder extends RecyclerView.ViewHolder {
         TextView temp,feels,humidity,pressure,state,description,date;
-        ImageView img;
+        ImageView imgr;
 
         public ApiViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,7 +84,8 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ApiViewHolder> {
             state=(TextView) itemView.findViewById(R.id.stateFor);
             description=(TextView) itemView.findViewById(R.id.desFor);
             date=(TextView) itemView.findViewById(R.id.dateFor);
-            img=(ImageView) itemView.findViewById(R.id.img);
+            imgr=(ImageView) itemView.findViewById(R.id.img2);
+
 
 
         }

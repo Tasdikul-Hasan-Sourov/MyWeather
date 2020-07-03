@@ -22,7 +22,7 @@
             android:id="@+id/search"
             android:layout_marginTop="-10dp"
             android:hint="Search City"
-            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            android:digits=" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
             android:textAlignment="center"
             android:layout_marginLeft="18dp"
             android:inputType="textPersonName"

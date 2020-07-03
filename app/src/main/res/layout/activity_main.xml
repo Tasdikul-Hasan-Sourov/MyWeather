@@ -129,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="temp"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="5dp"
                         android:id="@+id/maxtMain"/>
                 </LinearLayout>
@@ -147,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="temp"
-                        android:textSize="18sp"
+                        android:textSize="15sp"
                         android:layout_marginLeft="5dp"
                         android:id="@+id/mintMain"/>
                 </LinearLayout>
@@ -180,6 +180,14 @@
             android:textColor="#fff"
             android:text="Light Rain"
             android:id="@+id/descripMain"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/img"
+            android:src="@drawable/beach"/>
+
 
     </LinearLayout>
     <LinearLayout
